@@ -9,7 +9,7 @@ namespace DVLD
             InitializeComponent();
         }
 
-        private void btnPeople_Click(object sender, EventArgs e)
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPeopleManagement frm = new frmPeopleManagement();
             frm.ShowDialog();

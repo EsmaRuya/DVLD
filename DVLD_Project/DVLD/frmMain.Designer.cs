@@ -28,81 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tsTopMenu = new ToolStrip();
-            btnApplications = new ToolStripButton();
-            btnPeople = new ToolStripButton();
-            btnDrivers = new ToolStripButton();
-            btnUsers = new ToolStripButton();
-            btnAccountSettings = new ToolStripButton();
             panelContent = new Panel();
-            tsTopMenu.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            applicationsToolStripMenuItem = new ToolStripMenuItem();
+            peopleToolStripMenuItem = new ToolStripMenuItem();
+            driversToolStripMenuItem = new ToolStripMenuItem();
+            usersToolStripMenuItem = new ToolStripMenuItem();
+            accountSettingsToolStripMenuItem = new ToolStripMenuItem();
+            panelContent.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // tsTopMenu
-            // 
-            tsTopMenu.BackgroundImageLayout = ImageLayout.None;
-            tsTopMenu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            tsTopMenu.Items.AddRange(new ToolStripItem[] { btnApplications, btnPeople, btnDrivers, btnUsers, btnAccountSettings });
-            tsTopMenu.Location = new Point(0, 0);
-            tsTopMenu.Name = "tsTopMenu";
-            tsTopMenu.Padding = new Padding(0);
-            tsTopMenu.Size = new Size(1026, 71);
-            tsTopMenu.TabIndex = 0;
-            tsTopMenu.Text = "toolStrip1";
-            // 
-            // btnApplications
-            // 
-            btnApplications.Image = Properties.Resources.Applications_641;
-            btnApplications.ImageScaling = ToolStripItemImageScaling.None;
-            btnApplications.ImageTransparentColor = Color.Magenta;
-            btnApplications.Name = "btnApplications";
-            btnApplications.Size = new Size(174, 68);
-            btnApplications.Text = "Applications";
-            // 
-            // btnPeople
-            // 
-            btnPeople.Image = Properties.Resources.People_64;
-            btnPeople.ImageScaling = ToolStripItemImageScaling.None;
-            btnPeople.ImageTransparentColor = Color.Magenta;
-            btnPeople.Name = "btnPeople";
-            btnPeople.Size = new Size(131, 68);
-            btnPeople.Text = "People";
-            btnPeople.Click += btnPeople_Click;
-            // 
-            // btnDrivers
-            // 
-            btnDrivers.Image = Properties.Resources.Drivers_64;
-            btnDrivers.ImageScaling = ToolStripItemImageScaling.None;
-            btnDrivers.ImageTransparentColor = Color.Magenta;
-            btnDrivers.Name = "btnDrivers";
-            btnDrivers.Size = new Size(132, 68);
-            btnDrivers.Text = "Drivers";
-            // 
-            // btnUsers
-            // 
-            btnUsers.Image = Properties.Resources.Users_2_64;
-            btnUsers.ImageScaling = ToolStripItemImageScaling.None;
-            btnUsers.ImageTransparentColor = Color.Magenta;
-            btnUsers.Name = "btnUsers";
-            btnUsers.Size = new Size(119, 68);
-            btnUsers.Text = "Users";
-            // 
-            // btnAccountSettings
-            // 
-            btnAccountSettings.Image = Properties.Resources.account_settings_64;
-            btnAccountSettings.ImageScaling = ToolStripItemImageScaling.None;
-            btnAccountSettings.ImageTransparentColor = Color.Magenta;
-            btnAccountSettings.Name = "btnAccountSettings";
-            btnAccountSettings.Size = new Size(207, 68);
-            btnAccountSettings.Text = "Account Settings";
             // 
             // panelContent
             // 
+            panelContent.Controls.Add(menuStrip1);
             panelContent.Dock = DockStyle.Fill;
-            panelContent.Location = new Point(0, 71);
+            panelContent.Location = new Point(0, 0);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(1026, 468);
+            panelContent.Size = new Size(1026, 539);
             panelContent.TabIndex = 1;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = Color.White;
+            menuStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { applicationsToolStripMenuItem, peopleToolStripMenuItem, driversToolStripMenuItem, usersToolStripMenuItem, accountSettingsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1026, 72);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // applicationsToolStripMenuItem
+            // 
+            applicationsToolStripMenuItem.Image = Properties.Resources.Applications_64;
+            applicationsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            applicationsToolStripMenuItem.Name = "applicationsToolStripMenuItem";
+            applicationsToolStripMenuItem.Size = new Size(182, 68);
+            applicationsToolStripMenuItem.Text = "Applications";
+            // 
+            // peopleToolStripMenuItem
+            // 
+            peopleToolStripMenuItem.Image = Properties.Resources.People_64;
+            peopleToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
+            peopleToolStripMenuItem.Size = new Size(139, 68);
+            peopleToolStripMenuItem.Text = "People";
+            peopleToolStripMenuItem.Click += peopleToolStripMenuItem_Click;
+            // 
+            // driversToolStripMenuItem
+            // 
+            driversToolStripMenuItem.Image = Properties.Resources.Drivers_64;
+            driversToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            driversToolStripMenuItem.Name = "driversToolStripMenuItem";
+            driversToolStripMenuItem.Size = new Size(140, 68);
+            driversToolStripMenuItem.Text = "Drivers";
+            // 
+            // usersToolStripMenuItem
+            // 
+            usersToolStripMenuItem.Image = Properties.Resources.Users_2_64;
+            usersToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            usersToolStripMenuItem.Size = new Size(127, 68);
+            usersToolStripMenuItem.Text = "Users";
+            // 
+            // accountSettingsToolStripMenuItem
+            // 
+            accountSettingsToolStripMenuItem.Image = Properties.Resources.account_settings_64;
+            accountSettingsToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
+            accountSettingsToolStripMenuItem.Size = new Size(215, 68);
+            accountSettingsToolStripMenuItem.Text = "Account Settings";
             // 
             // Form1
             // 
@@ -110,25 +106,26 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1026, 539);
             Controls.Add(panelContent);
-            Controls.Add(tsTopMenu);
+            IsMdiContainer = true;
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DVLD";
             WindowState = FormWindowState.Maximized;
-            tsTopMenu.ResumeLayout(false);
-            tsTopMenu.PerformLayout();
+            panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private ToolStrip tsTopMenu;
-        private ToolStripButton btnApplications;
-        private ToolStripButton btnPeople;
-        private ToolStripButton btnDrivers;
-        private ToolStripButton btnUsers;
-        private ToolStripButton btnAccountSettings;
         private Panel panelContent;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem applicationsToolStripMenuItem;
+        private ToolStripMenuItem peopleToolStripMenuItem;
+        private ToolStripMenuItem driversToolStripMenuItem;
+        private ToolStripMenuItem usersToolStripMenuItem;
+        private ToolStripMenuItem accountSettingsToolStripMenuItem;
     }
 }
