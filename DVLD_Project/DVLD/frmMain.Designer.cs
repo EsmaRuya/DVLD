@@ -67,6 +67,7 @@
             btnPeople.Name = "btnPeople";
             btnPeople.Size = new Size(131, 68);
             btnPeople.Text = "People";
+            btnPeople.Click += btnPeople_Click;
             // 
             // btnDrivers
             // 
