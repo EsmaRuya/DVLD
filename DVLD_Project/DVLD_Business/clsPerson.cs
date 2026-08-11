@@ -2,7 +2,7 @@
 
 namespace DVLD_Business
 {
-    public class Class1
+    public class clsPerson
     {
     }
 }

@@ -2,7 +2,8 @@
 
 namespace DVLD_DataAccess
 {
-    public class Class1
+    public class clsCountries
     {
+        
     }
 }
