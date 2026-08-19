@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DVLD_DataAccess
 {
-    internal class clsPersonData
+    public class clsPersonData
     {
         static public bool IsPersonExist(int personID)
         {
@@ -337,10 +337,8 @@ namespace DVLD_DataAccess
             {
                 connection.Open();  
                 SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
-                {
-                    dt.Load(reader);
-                }
+                if(reader.HasRows) { dt.Load(reader); }
+                reader.Close();
             }
             catch (Exception ex) { }
 

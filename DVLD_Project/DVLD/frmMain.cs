@@ -11,7 +11,7 @@ namespace DVLD
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPeopleManagement frm = new frmPeopleManagement();
+            frmListPeople frm = new frmListPeople();
             frm.ShowDialog();
         }
     }

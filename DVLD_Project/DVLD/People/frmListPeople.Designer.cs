@@ -1,6 +1,6 @@
 ﻿namespace DVLD.People
 {
-    partial class frmPeopleManagement
+    partial class frmListPeople
     {
         /// <summary>
         /// Required designer variable.
@@ -64,10 +64,16 @@
             // 
             // dgvListPeople
             // 
+            dgvListPeople.AllowUserToAddRows = false;
+            dgvListPeople.AllowUserToDeleteRows = false;
+            dgvListPeople.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListPeople.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvListPeople.BackgroundColor = Color.White;
             dgvListPeople.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListPeople.Location = new Point(12, 195);
             dgvListPeople.Name = "dgvListPeople";
+            dgvListPeople.ReadOnly = true;
+            dgvListPeople.RowHeadersVisible = false;
             dgvListPeople.Size = new Size(1313, 274);
             dgvListPeople.TabIndex = 2;
             // 
@@ -99,6 +105,7 @@
             btnAddNewPerson.Size = new Size(61, 45);
             btnAddNewPerson.TabIndex = 5;
             btnAddNewPerson.UseVisualStyleBackColor = true;
+            btnAddNewPerson.Click += this.btnAddNewPerson_Click;
             // 
             // label3
             // 
@@ -116,7 +123,7 @@
             lblRecordsCount.AutoSize = true;
             lblRecordsCount.Font = new Font("Segoe UI", 12F);
             lblRecordsCount.ForeColor = Color.Black;
-            lblRecordsCount.Location = new Point(113, 482);
+            lblRecordsCount.Location = new Point(102, 482);
             lblRecordsCount.Name = "lblRecordsCount";
             lblRecordsCount.Size = new Size(37, 21);
             lblRecordsCount.TabIndex = 7;
@@ -133,8 +140,9 @@
             btnClose.TabIndex = 8;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
-            // frmPeopleManagement
+            // frmListPeople
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -151,9 +159,10 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
-            Name = "frmPeopleManagement";
+            Name = "frmListPeople";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Manage people";
+            Load += frmListPeople_Load;
             Resize += frmPeopleManagement_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvListPeople).EndInit();
