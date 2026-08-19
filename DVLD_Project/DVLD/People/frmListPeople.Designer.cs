@@ -45,7 +45,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Maroon;
+            label1.ForeColor = SystemColors.ActiveCaption;
             label1.Location = new Point(594, 125);
             label1.Name = "label1";
             label1.Size = new Size(149, 25);
@@ -80,11 +80,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.ForeColor = Color.Black;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ActiveCaption;
             label2.Location = new Point(12, 153);
             label2.Name = "label2";
-            label2.Size = new Size(66, 21);
+            label2.Size = new Size(72, 21);
             label2.TabIndex = 3;
             label2.Text = "Filter By";
             // 
@@ -105,13 +105,13 @@
             btnAddNewPerson.Size = new Size(61, 45);
             btnAddNewPerson.TabIndex = 5;
             btnAddNewPerson.UseVisualStyleBackColor = true;
-            btnAddNewPerson.Click += this.btnAddNewPerson_Click;
+            btnAddNewPerson.Click += btnAddNewPerson_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = SystemColors.ActiveCaption;
             label3.Location = new Point(12, 482);
             label3.Name = "label3";
             label3.Size = new Size(95, 21);
@@ -121,8 +121,8 @@
             // lblRecordsCount
             // 
             lblRecordsCount.AutoSize = true;
-            lblRecordsCount.Font = new Font("Segoe UI", 12F);
-            lblRecordsCount.ForeColor = Color.Black;
+            lblRecordsCount.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblRecordsCount.ForeColor = SystemColors.ActiveCaption;
             lblRecordsCount.Location = new Point(102, 482);
             lblRecordsCount.Name = "lblRecordsCount";
             lblRecordsCount.Size = new Size(37, 21);

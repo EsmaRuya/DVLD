@@ -29,7 +29,8 @@ namespace DVLD.People
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
-
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
+            frm.ShowDialog();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
