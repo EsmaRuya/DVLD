@@ -1,3 +1,5 @@
+using DVLD.People;
+
 namespace DVLD
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace DVLD
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+           // Application.Run(new frmAddUpdatePerson());
         }
     }
 }

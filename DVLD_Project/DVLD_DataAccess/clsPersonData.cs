@@ -169,7 +169,7 @@ namespace DVLD_DataAccess
             SqlCommand cmd = new SqlCommand(query, connection);
            
             cmd.Parameters.AddWithValue("@firstName", firstName);
-            cmd.Parameters.AddWithValue("@SsecondName", secondName);
+            cmd.Parameters.AddWithValue("@secondName", secondName);
             if (thirdName != "" && thirdName != null)
                 cmd.Parameters.AddWithValue("@thirdName", thirdName);
             else

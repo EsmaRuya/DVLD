@@ -90,11 +90,14 @@
             // 
             // cbxFilerBy
             // 
+            cbxFilerBy.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbxFilerBy.FormattingEnabled = true;
+            cbxFilerBy.Items.AddRange(new object[] { "None", "Person ID", "National No.", "First Name", "Second Name", "Third Name", "Last Name", "Country", "Gender", "Phone", "Email" });
             cbxFilerBy.Location = new Point(90, 149);
             cbxFilerBy.Name = "cbxFilerBy";
             cbxFilerBy.Size = new Size(266, 29);
             cbxFilerBy.TabIndex = 4;
+            cbxFilerBy.Text = "None";
             // 
             // btnAddNewPerson
             // 

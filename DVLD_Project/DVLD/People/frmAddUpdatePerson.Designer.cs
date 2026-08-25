@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -63,7 +64,7 @@
             label4 = new Label();
             txtNationalNo = new TextBox();
             label3 = new Label();
-            pic = new PictureBox();
+            picPerson = new PictureBox();
             txtLastName = new TextBox();
             txtThirdName = new TextBox();
             txtSecondName = new TextBox();
@@ -71,6 +72,7 @@
             label2 = new Label();
             pictureBox2 = new PictureBox();
             lblPersonID = new Label();
+            errorProvider = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -81,8 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picPerson).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -143,7 +146,7 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(txtNationalNo);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(pic);
+            panel1.Controls.Add(picPerson);
             panel1.Controls.Add(txtLastName);
             panel1.Controls.Add(txtThirdName);
             panel1.Controls.Add(txtSecondName);
@@ -218,9 +221,10 @@
             btnClose.Location = new Point(496, 345);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(114, 32);
-            btnClose.TabIndex = 35;
+            btnClose.TabIndex = 0;
             btnClose.Text = " Close";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // btnSave
             // 
@@ -230,9 +234,10 @@
             btnSave.Location = new Point(626, 345);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(114, 32);
-            btnSave.TabIndex = 34;
+            btnSave.TabIndex = 1;
             btnSave.Text = " Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // pictureBox11
             // 
@@ -251,6 +256,7 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(561, 114);
             txtAddress.TabIndex = 32;
+            txtAddress.Validating += ValidateEmptyTextBox;
             // 
             // label9
             // 
@@ -308,6 +314,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(177, 29);
             txtEmail.TabIndex = 26;
+            txtEmail.Validating += txtEmail_Validating;
             // 
             // label7
             // 
@@ -336,6 +343,7 @@
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(177, 29);
             txtPhone.TabIndex = 23;
+            txtPhone.Validating += txtPhone_Validating;
             // 
             // label6
             // 
@@ -457,6 +465,7 @@
             txtNationalNo.Name = "txtNationalNo";
             txtNationalNo.Size = new Size(177, 29);
             txtNationalNo.TabIndex = 10;
+            txtNationalNo.Validating += txtNationalNo_Validating;
             // 
             // label3
             // 
@@ -469,16 +478,16 @@
             label3.TabIndex = 9;
             label3.Text = "National No";
             // 
-            // pic
+            // picPerson
             // 
-            pic.BorderStyle = BorderStyle.FixedSingle;
-            pic.Image = Properties.Resources.person_man_72;
-            pic.Location = new Point(755, 82);
-            pic.Name = "pic";
-            pic.Size = new Size(177, 162);
-            pic.SizeMode = PictureBoxSizeMode.CenterImage;
-            pic.TabIndex = 8;
-            pic.TabStop = false;
+            picPerson.BorderStyle = BorderStyle.FixedSingle;
+            picPerson.Image = Properties.Resources.person_man_72;
+            picPerson.Location = new Point(755, 82);
+            picPerson.Name = "picPerson";
+            picPerson.Size = new Size(177, 162);
+            picPerson.SizeMode = PictureBoxSizeMode.CenterImage;
+            picPerson.TabIndex = 8;
+            picPerson.TabStop = false;
             // 
             // txtLastName
             // 
@@ -486,6 +495,7 @@
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(177, 29);
             txtLastName.TabIndex = 7;
+            txtLastName.Validating += ValidateEmptyTextBox;
             // 
             // txtThirdName
             // 
@@ -500,6 +510,7 @@
             txtSecondName.Name = "txtSecondName";
             txtSecondName.Size = new Size(177, 29);
             txtSecondName.TabIndex = 5;
+            txtSecondName.Validating += ValidateEmptyTextBox;
             // 
             // txtFirstName
             // 
@@ -507,6 +518,7 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(177, 29);
             txtFirstName.TabIndex = 4;
+            txtFirstName.Validating += ValidateEmptyTextBox;
             // 
             // label2
             // 
@@ -536,14 +548,20 @@
             lblPersonID.Location = new Point(152, 79);
             lblPersonID.Name = "lblPersonID";
             lblPersonID.Size = new Size(41, 21);
-            lblPersonID.TabIndex = 14;
+            lblPersonID.TabIndex = 1;
             lblPersonID.Text = "N/A";
+            // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
             // 
             // frmAddUpdatePerson
             // 
+            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            CancelButton = btnClose;
             ClientSize = new Size(991, 546);
             Controls.Add(lblPersonID);
             Controls.Add(pictureBox2);
@@ -557,6 +575,7 @@
             Name = "frmAddUpdatePerson";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Person";
+            Load += frmAddUpdatePerson_Load;
             Resize += frmAddUpdatePerson_Resize;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -569,8 +588,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picPerson).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -580,7 +600,7 @@
         private Label lblTitle;
         private Label label1;
         private Panel panel1;
-        private PictureBox pic;
+        private PictureBox picPerson;
         private TextBox txtLastName;
         private TextBox txtThirdName;
         private TextBox txtSecondName;
@@ -620,5 +640,6 @@
         private Label label13;
         private Label label12;
         private Label label11;
+        private ErrorProvider errorProvider;
     }
 }
