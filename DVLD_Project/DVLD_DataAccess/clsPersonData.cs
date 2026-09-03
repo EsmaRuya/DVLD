@@ -78,7 +78,7 @@ namespace DVLD_DataAccess
                     lastName = (string)reader["LastName"];
                     nationalNumber = (string)reader["NationalNo"];
                     dateOfBirth = (DateTime)reader["DateOfBirth"];
-                    gender = (short)reader["Gender"];
+                    gender = Convert.ToInt16(reader["Gender"]);
                     phoneNumber = (string)reader["Phone"];
                     if (reader["Email"] != DBNull.Value)
                     { email = (string)reader["Email"]; }
@@ -98,7 +98,7 @@ namespace DVLD_DataAccess
             }
             catch(Exception ex)
             {
-                isFound = false;
+                throw;
             }
             finally
             {
@@ -236,7 +236,7 @@ namespace DVLD_DataAccess
 
             cmd.Parameters.AddWithValue("@personID", personID);
             cmd.Parameters.AddWithValue("@firstName", firstName);
-            cmd.Parameters.AddWithValue("@SsecondName", secondName);
+            cmd.Parameters.AddWithValue("@secondName", secondName);
             if (thirdName != "" && thirdName != null)
                 cmd.Parameters.AddWithValue("@thirdName", thirdName);
             else
@@ -270,7 +270,7 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
 
-            catch (Exception ex) { isUpdated = false; }
+            catch (Exception ex) { throw; }
 
             finally { connection.Close(); }
 

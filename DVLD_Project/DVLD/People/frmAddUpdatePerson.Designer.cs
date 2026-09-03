@@ -202,6 +202,7 @@
             linkRemove.TabIndex = 37;
             linkRemove.TabStop = true;
             linkRemove.Text = "Remove";
+            linkRemove.LinkClicked += linkRemove_LinkClicked;
             // 
             // linkSetImage
             // 
@@ -212,6 +213,7 @@
             linkSetImage.TabIndex = 36;
             linkSetImage.TabStop = true;
             linkSetImage.Text = "Set Image";
+            linkSetImage.LinkClicked += linkSetImage_LinkClicked;
             // 
             // btnClose
             // 

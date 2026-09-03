@@ -28,17 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             dgvListPeople = new DataGridView();
+            contextMenuStrip = new ContextMenuStrip(components);
+            showDetailsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            addNewPersonToolStripMenuItem = new ToolStripMenuItem();
+            editToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            sendEmailToolStripMenuItem = new ToolStripMenuItem();
+            phoneCallToolStripMenuItem = new ToolStripMenuItem();
             label2 = new Label();
             cbxFilerBy = new ComboBox();
             btnAddNewPerson = new Button();
             label3 = new Label();
             lblRecordsCount = new Label();
             btnClose = new Button();
+            txtFilter = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvListPeople).BeginInit();
+            contextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -70,19 +82,77 @@
             dgvListPeople.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvListPeople.BackgroundColor = Color.White;
             dgvListPeople.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListPeople.ContextMenuStrip = contextMenuStrip;
             dgvListPeople.Location = new Point(12, 195);
             dgvListPeople.Name = "dgvListPeople";
             dgvListPeople.ReadOnly = true;
-            dgvListPeople.RowHeadersVisible = false;
             dgvListPeople.Size = new Size(1313, 274);
             dgvListPeople.TabIndex = 2;
+            // 
+            // contextMenuStrip
+            // 
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { showDetailsToolStripMenuItem, toolStripSeparator1, addNewPersonToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, toolStripSeparator2, sendEmailToolStripMenuItem, phoneCallToolStripMenuItem });
+            contextMenuStrip.Name = "contextMenuStrip1";
+            contextMenuStrip.Size = new Size(163, 148);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            showDetailsToolStripMenuItem.Size = new Size(162, 22);
+            showDetailsToolStripMenuItem.Text = "Show Details";
+            showDetailsToolStripMenuItem.Click += showDetailsToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(159, 6);
+            // 
+            // addNewPersonToolStripMenuItem
+            // 
+            addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
+            addNewPersonToolStripMenuItem.Size = new Size(162, 22);
+            addNewPersonToolStripMenuItem.Text = "Add New Person";
+            addNewPersonToolStripMenuItem.Click += addNewPersonToolStripMenuItem_Click;
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new Size(162, 22);
+            editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(162, 22);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(159, 6);
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            sendEmailToolStripMenuItem.Size = new Size(162, 22);
+            sendEmailToolStripMenuItem.Text = "Send Email";
+            sendEmailToolStripMenuItem.Click += sendEmailToolStripMenuItem_Click;
+            // 
+            // phoneCallToolStripMenuItem
+            // 
+            phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
+            phoneCallToolStripMenuItem.Size = new Size(162, 22);
+            phoneCallToolStripMenuItem.Text = "Phone Call";
+            phoneCallToolStripMenuItem.Click += phoneCallToolStripMenuItem_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ActiveCaption;
-            label2.Location = new Point(12, 153);
+            label2.Location = new Point(12, 162);
             label2.Name = "label2";
             label2.Size = new Size(72, 21);
             label2.TabIndex = 3;
@@ -93,9 +163,9 @@
             cbxFilerBy.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbxFilerBy.FormattingEnabled = true;
             cbxFilerBy.Items.AddRange(new object[] { "None", "Person ID", "National No.", "First Name", "Second Name", "Third Name", "Last Name", "Country", "Gender", "Phone", "Email" });
-            cbxFilerBy.Location = new Point(90, 149);
+            cbxFilerBy.Location = new Point(90, 158);
             cbxFilerBy.Name = "cbxFilerBy";
-            cbxFilerBy.Size = new Size(266, 29);
+            cbxFilerBy.Size = new Size(231, 29);
             cbxFilerBy.TabIndex = 4;
             cbxFilerBy.Text = "None";
             // 
@@ -145,12 +215,21 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // txtFilter
+            // 
+            txtFilter.Location = new Point(327, 158);
+            txtFilter.Name = "txtFilter";
+            txtFilter.Size = new Size(230, 29);
+            txtFilter.TabIndex = 9;
+            txtFilter.Visible = false;
+            // 
             // frmListPeople
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1337, 545);
+            Controls.Add(txtFilter);
             Controls.Add(btnClose);
             Controls.Add(lblRecordsCount);
             Controls.Add(label3);
@@ -162,6 +241,8 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmListPeople";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Manage people";
@@ -169,6 +250,7 @@
             Resize += frmPeopleManagement_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvListPeople).EndInit();
+            contextMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,5 +266,15 @@
         private Label label3;
         private Label lblRecordsCount;
         private Button btnClose;
+        private ContextMenuStrip contextMenuStrip;
+        private ToolStripMenuItem showDetailsToolStripMenuItem;
+        private ToolStripMenuItem addNewPersonToolStripMenuItem;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem sendEmailToolStripMenuItem;
+        private ToolStripMenuItem phoneCallToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
+        private TextBox txtFilter;
     }
 }

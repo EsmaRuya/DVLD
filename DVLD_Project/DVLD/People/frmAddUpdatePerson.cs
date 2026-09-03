@@ -67,9 +67,9 @@ namespace DVLD.People
 
         private void _LoadData()
         {
-            _Person = _Person.Find(_PersonId);
-            
-            if(_Person == null)
+            _Person = clsPerson.Find(_PersonId);
+
+            if (_Person == null)
             {
                 MessageBox.Show($"No person with {_PersonId} ID is found!");
                 this.Close();
@@ -81,7 +81,21 @@ namespace DVLD.People
             txtSecondName.Text = _Person.SecondName;
             txtThirdName.Text = _Person.ThirdName;
             txtLastName.Text = _Person.LastName;
-            // continue
+            txtNationalNo.Text = _Person.NationalNo;
+            txtPhone.Text = _Person.Phone;
+            txtEmail.Text = _Person.Email;
+            txtAddress.Text = _Person.Address;
+
+            dtpDateOfBirth.Value = _Person.DateOfBirth;
+
+            if (_Person.Gender == (short)enGender.Male) rdbMale.Checked = true;
+            else rdbFemale.Checked = true;
+
+            cmbCountries.SelectedItem = cmbCountries.FindString(_Person.CountryInfo.CountryName);
+
+            if (_Person.ImagePath != "") picPerson.ImageLocation = _Person.ImagePath;
+
+            linkRemove.Visible = (_Person.ImagePath != "");
         }
         private void frmAddUpdatePerson_Resize(object sender, EventArgs e)
         {
@@ -124,7 +138,7 @@ namespace DVLD.People
                 errorProvider.SetError(txtNationalNo, null);
             }
 
-            if (clsPerson.isPersonExist(txtNationalNo.Text.Trim()))
+            if (txtNationalNo.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtNationalNo, "This National No is already exist!");
@@ -157,7 +171,7 @@ namespace DVLD.People
         {
             if (txtEmail.Text.Trim() == "") return;
 
-            if(!clsValidation.validateEmail(txtEmail.Text))
+            if (!clsValidation.validateEmail(txtEmail.Text))
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtEmail, "Invalid email address format!");
@@ -171,7 +185,7 @@ namespace DVLD.People
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(!this.ValidateChildren())
+            if (!this.ValidateChildren())
             {
                 MessageBox.Show("Some fields are not valide");
                 return;
@@ -202,6 +216,8 @@ namespace DVLD.People
                 MessageBox.Show("Data saved successfully!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 DataBack?.Invoke(this, _Person.PersonID);
+
+                this.Close(); // to close window after save
             }
             else MessageBox.Show("Error!! Data is not saved successfully!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -211,6 +227,14 @@ namespace DVLD.People
             this.Close();
         }
 
+        private void linkSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // later
+        }
 
+        private void linkRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // later
+        }
     }
 }

@@ -108,7 +108,7 @@ namespace DVLD_Business
             return clsPersonData.IsPersonExist(nationalNo);
         }
 
-        public clsPerson Find(int PersonId)
+        public static clsPerson Find(int PersonId)
         {
             string FirstName = "", SecondName = "", ThirdName = "", LastName = "", NationalNo = "", Address = "", Phone = "", Email = "", ImagePath = "";
             DateTime DateOfBirth = DateTime.Now;
@@ -139,5 +139,11 @@ namespace DVLD_Business
               
             return false;
         }
+
+        public static bool DeletePerson(int PersonId)
+        {
+            return clsPersonData.DeletePerson(PersonId);
+        }
+    
     }
 }
