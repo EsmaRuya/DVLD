@@ -72,7 +72,7 @@ namespace DVLD.People
 
             if (_Person == null)
             {
-                MessageBox.Show($"No person with {_PersonId} ID is found!");
+                MessageBox.Show($"No person with {_PersonId} ID is found!", "Person not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
                 return;
             }
@@ -92,12 +92,22 @@ namespace DVLD.People
             if (_Person.Gender == (short)enGender.Male) rdbMale.Checked = true;
             else rdbFemale.Checked = true;
 
+            if (rdbMale.Checked) picPerson.Image = Resources.person_man_72;
+            else picPerson.Image = Resources.person_woman_72;
+
             cmbCountries.SelectedItem = cmbCountries.FindString(_Person.CountryInfo.CountryName);
 
             if (_Person.ImagePath != "") picPerson.ImageLocation = _Person.ImagePath;
 
             linkRemove.Visible = (_Person.ImagePath != "");
         }
+
+        private bool _HandlePersonImage()
+        {
+
+            return false;
+        }
+
         private void frmAddUpdatePerson_Resize(object sender, EventArgs e)
         {
             this.Size = new Size(1007, 585);
@@ -188,9 +198,12 @@ namespace DVLD.People
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fields are not valide");
+                MessageBox.Show("Some fields are not valide", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            //if (!_HandlePersonImage())
+            //    return;
 
             _Person.FirstName = txtFirstName.Text.Trim();
             _Person.SecondName = txtSecondName.Text.Trim();
@@ -233,32 +246,42 @@ namespace DVLD.People
             OpenFileDialog img = new OpenFileDialog();
             img.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             img.Title = "Select Image";
-            img.Filter = "Image File|*.png; *.jpg; *.jpeg";
+            img.Filter = "Image File|*.png; *.jpg; *.jpeg: *.gif; *.bmp";
+            img.FilterIndex = 1;
             img.Multiselect = false;
 
-            if(img.ShowDialog() == DialogResult.OK)
+            if (img.ShowDialog() == DialogResult.OK)
             {
-                picPerson.Image = Image.FromFile(img.FileName);
+                string ImagePath = img.FileName;
+
+                picPerson.Load(ImagePath);
+                //  picPerson.Image = Image.FromFile(ImagePath);
                 picPerson.SizeMode = PictureBoxSizeMode.StretchImage;
-                _Person.ImagePath = img.FileName;
+
                 linkRemove.Visible = true;
-                MessageBox.Show($"Your path image is {img.FileName}","");
             }
         }
 
         private void linkRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // later
+            picPerson.ImageLocation = null;
+
+            if (rdbMale.Checked) picPerson.Image = Resources.person_man_72;
+            else picPerson.Image = Resources.person_woman_72;
+
+            linkRemove.Visible = false;
         }
 
-        private void rdbMale_CheckedChanged(object sender, EventArgs e)
+        private void rdbMale_Click(object sender, EventArgs e)
         {
-            picPerson.Image = Resources.person_man_72;
+            if (picPerson.ImageLocation == null)
+                picPerson.Image = Resources.person_man_72;
         }
 
-        private void rdbFemale_CheckedChanged(object sender, EventArgs e)
+        private void rdbFemale_Click(object sender, EventArgs e)
         {
-            picPerson.Image = Resources.person_woman_72;
+            if (picPerson.ImageLocation == null)
+                picPerson.Image = Resources.person_woman_72;
         }
     }
 }

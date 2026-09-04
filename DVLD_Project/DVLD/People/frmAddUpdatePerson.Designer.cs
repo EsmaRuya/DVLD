@@ -368,7 +368,7 @@
             rdbFemale.TabStop = true;
             rdbFemale.Text = "Female";
             rdbFemale.UseVisualStyleBackColor = true;
-            rdbFemale.CheckedChanged += rdbFemale_CheckedChanged;
+            rdbFemale.Click += rdbFemale_Click;
             // 
             // pictureBox7
             // 
@@ -391,7 +391,7 @@
             rdbMale.TabStop = true;
             rdbMale.Text = "Male";
             rdbMale.UseVisualStyleBackColor = true;
-            rdbMale.CheckedChanged += rdbMale_CheckedChanged;
+            rdbMale.Click += rdbMale_Click;
             // 
             // label5
             // 
