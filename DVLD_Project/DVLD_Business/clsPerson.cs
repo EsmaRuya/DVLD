@@ -10,7 +10,7 @@ namespace DVLD_Business
         public enMode Mode;
 
         // Fields
-        public clsCountry CountryInfo;
+        public clsCountry CountryInfo; // To do this = Person.CountryInfo.Name
 
         // Properties: Getters & Setters 
         public int PersonID { get; set; }
@@ -116,6 +116,20 @@ namespace DVLD_Business
             int CountryId = -1;
 
             bool isFound = clsPersonData.GetPersonInfoById(PersonId, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref NationalNo, ref DateOfBirth, ref Gender, ref Phone, ref Email, ref CountryId, ref Address, ref ImagePath);
+
+            if (isFound) return new clsPerson(PersonId, FirstName, SecondName, ThirdName, LastName, NationalNo, DateOfBirth, Gender, Address, Phone, Email, CountryId, ImagePath);
+            else return null;
+        }
+
+        public static clsPerson Find(string NationalNo)
+        {
+            int PersonId = -1;
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            short Gender = -1;
+            int CountryId = -1;
+
+            bool isFound = clsPersonData.GetPersonInfoByNationalNo(NationalNo, ref PersonId, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref DateOfBirth, ref Gender, ref Phone, ref Email, ref CountryId, ref Address, ref ImagePath);
 
             if (isFound) return new clsPerson(PersonId, FirstName, SecondName, ThirdName, LastName, NationalNo, DateOfBirth, Gender, Address, Phone, Email, CountryId, ImagePath);
             else return null;

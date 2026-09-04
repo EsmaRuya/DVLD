@@ -13,13 +13,13 @@ namespace DVLD.People
 
         private static DataTable _PeopleTable = clsPerson.GetAllPeople();
 
-        private DataTable _dtPeopleList = _PeopleTable.DefaultView.ToTable(false, "PersonId", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "Gender", "DateOfBirth", "CountryName", "Phone", "Email");
+        private DataTable _dtPeopleList = _PeopleTable.DefaultView.ToTable(false, "PersonId", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "capGender", "DateOfBirth", "CountryName", "Phone", "Email");
 
         private void _RefreshPeopleList()
         {
             _PeopleTable = clsPerson.GetAllPeople();
 
-            _dtPeopleList = _PeopleTable.DefaultView.ToTable(false, "PersonId", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "Gender", "DateOfBirth", "CountryName", "Phone", "Email");
+            _dtPeopleList = _PeopleTable.DefaultView.ToTable(false, "PersonId", "NationalNo", "FirstName", "SecondName", "ThirdName", "LastName", "capGender", "DateOfBirth", "CountryName", "Phone", "Email");
 
             dgvListPeople.DataSource = _dtPeopleList;
             lblRecordsCount.Text = dgvListPeople.Rows.Count.ToString();

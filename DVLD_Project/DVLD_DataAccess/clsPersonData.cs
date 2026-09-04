@@ -98,7 +98,7 @@ namespace DVLD_DataAccess
             }
             catch(Exception ex)
             {
-                throw;
+                throw; // Handle it later
             }
             finally
             {
@@ -146,7 +146,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                isFound = false;
+                // isFound = false;
+                throw; // Handle it later
             }
             finally
             {
@@ -320,7 +321,7 @@ namespace DVLD_DataAccess
                                     People.Gender,
                                         CASE WHEN People.Gender = 0
                                             THEN 'Male' ELSE 'Female'
-                                        END AS Gender,
+                                        END AS capGender,
                                     People.Address,
                                     People.Phone,
                                     People.Email,
@@ -340,7 +341,10 @@ namespace DVLD_DataAccess
                 if(reader.HasRows) { dt.Load(reader); }
                 reader.Close();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                throw; // Handle it later
+            }
 
             finally { connection.Close(); }
 

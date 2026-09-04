@@ -1,4 +1,5 @@
 ﻿using DVLD.Global_Classes;
+using DVLD.Properties;
 using DVLD_Business;
 using System;
 using System.ComponentModel;
@@ -229,12 +230,35 @@ namespace DVLD.People
 
         private void linkSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // later
+            OpenFileDialog img = new OpenFileDialog();
+            img.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            img.Title = "Select Image";
+            img.Filter = "Image File|*.png; *.jpg; *.jpeg";
+            img.Multiselect = false;
+
+            if(img.ShowDialog() == DialogResult.OK)
+            {
+                picPerson.Image = Image.FromFile(img.FileName);
+                picPerson.SizeMode = PictureBoxSizeMode.StretchImage;
+                _Person.ImagePath = img.FileName;
+                linkRemove.Visible = true;
+                MessageBox.Show($"Your path image is {img.FileName}","");
+            }
         }
 
         private void linkRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // later
+        }
+
+        private void rdbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            picPerson.Image = Resources.person_man_72;
+        }
+
+        private void rdbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            picPerson.Image = Resources.person_woman_72;
         }
     }
 }
