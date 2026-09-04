@@ -101,12 +101,45 @@ namespace DVLD.People
 
             linkRemove.Visible = (_Person.ImagePath != "");
         }
-
         private bool _HandlePersonImage()
         {
+            // Check if the image has changed
+            if (_Person.ImagePath != picPerson.ImageLocation)
+            {
+                // Check if there's an old image 
+                if (_Person.ImagePath != "")
+                {
+                    // Delete the old image from the folder.
+                    try { File.Delete(_Person.ImagePath); }
+                    catch (IOException) { throw; }
+                }
 
-            return false;
+                // Check if there's a new image
+                if (picPerson.ImageLocation != null)
+                {
+
+                    // Get the path of new image
+                    string SourceImageFile = picPerson.ImageLocation.ToString();
+
+                    // Copy the new image to the folder with a new GUID-based name.
+                    if (clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
+                    {
+                        // Update pictureBox's location with the new path
+                        picPerson.ImageLocation = SourceImageFile;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error copying image file!",
+                        "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
+        
 
         private void frmAddUpdatePerson_Resize(object sender, EventArgs e)
         {
@@ -202,8 +235,8 @@ namespace DVLD.People
                 return;
             }
 
-            //if (!_HandlePersonImage())
-            //    return;
+            if (!_HandlePersonImage())
+                return;
 
             _Person.FirstName = txtFirstName.Text.Trim();
             _Person.SecondName = txtSecondName.Text.Trim();
