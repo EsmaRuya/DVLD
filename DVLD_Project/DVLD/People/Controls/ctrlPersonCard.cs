@@ -12,7 +12,7 @@ namespace DVLD.People.Controls
 
         public int PersonID
         {
-            get { return PersonID; }
+            get { return _PersonID; }
         }
         public clsPerson SelectedPersonInfo
         {
@@ -39,13 +39,18 @@ namespace DVLD.People.Controls
         {
             linkEditPersonInfo.Enabled = true;
 
+            _PersonID = _Person.PersonID;
+
             txtPersonID.Text = _Person.PersonID.ToString();
             txtName.Text = _Person.FullName;
             txtNationalNo.Text = _Person.NationalNo;
             txtDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString(); ;
             txtGender.Text = _Person.Gender == 0 ? "Male" : "Female";
             txtCountry.Text = clsCountry.Find(_Person.CountryID).CountryName;
-            txtEmail.Text = _Person.Email;
+            
+            if (_Person.Email == "") txtEmail.Text = "_______";
+            else txtEmail.Text = _Person.Email;
+
             txtPhone.Text = _Person.Phone;
             txtAddress.Text = _Person.Address;
 
@@ -84,6 +89,8 @@ namespace DVLD.People.Controls
 
         public void RestPersonInfo()
         {
+            _PersonID = -1;
+
             txtPersonID.Text = "[??????????]";
             txtName.Text = "[??????????]";
             txtNationalNo.Text = "[??????????]";

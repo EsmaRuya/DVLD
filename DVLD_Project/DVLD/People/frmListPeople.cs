@@ -87,8 +87,8 @@ namespace DVLD.People
         {
             int PersonId = (int)dgvListPeople.CurrentRow.Cells[0].Value;
 
-            frmShowPersonInfo frm = new frmShowPersonInfo();
-            frm.ShowDialog();
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonId);
+            frm.ShowDialog();     
             _RefreshPeopleList();
         }
 
