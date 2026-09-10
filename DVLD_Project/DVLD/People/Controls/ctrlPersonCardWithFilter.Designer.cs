@@ -28,37 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ctrlPersonCard1 = new ctrlPersonCard();
-            groupBox1 = new GroupBox();
-            label1 = new Label();
-            cmbFilterBy = new ComboBox();
-            txtFilterBy = new TextBox();
-            btnSearch = new Button();
+            components = new System.ComponentModel.Container();
+            ctrlPersonCard = new ctrlPersonCard();
+            groupBoxFilter = new GroupBox();
             btnAdd = new Button();
-            groupBox1.SuspendLayout();
+            btnSearch = new Button();
+            txtFilterBy = new TextBox();
+            cmbFilterBy = new ComboBox();
+            label1 = new Label();
+            errorProvider1 = new ErrorProvider(components);
+            groupBoxFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
-            // ctrlPersonCard1
+            // ctrlPersonCard
             // 
-            ctrlPersonCard1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ctrlPersonCard1.Location = new Point(3, 84);
-            ctrlPersonCard1.Margin = new Padding(4);
-            ctrlPersonCard1.Name = "ctrlPersonCard1";
-            ctrlPersonCard1.Size = new Size(897, 404);
-            ctrlPersonCard1.TabIndex = 0;
+            ctrlPersonCard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ctrlPersonCard.Location = new Point(3, 84);
+            ctrlPersonCard.Margin = new Padding(4);
+            ctrlPersonCard.Name = "ctrlPersonCard";
+            ctrlPersonCard.Size = new Size(897, 404);
+            ctrlPersonCard.TabIndex = 0;
             // 
-            // groupBox1
+            // groupBoxFilter
             // 
-            groupBox1.Controls.Add(btnAdd);
-            groupBox1.Controls.Add(btnSearch);
-            groupBox1.Controls.Add(txtFilterBy);
-            groupBox1.Controls.Add(cmbFilterBy);
-            groupBox1.Location = new Point(3, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(884, 66);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Filter";
+            groupBoxFilter.Controls.Add(btnAdd);
+            groupBoxFilter.Controls.Add(btnSearch);
+            groupBoxFilter.Controls.Add(txtFilterBy);
+            groupBoxFilter.Controls.Add(cmbFilterBy);
+            groupBoxFilter.Location = new Point(3, 3);
+            groupBoxFilter.Name = "groupBoxFilter";
+            groupBoxFilter.Size = new Size(884, 66);
+            groupBoxFilter.TabIndex = 1;
+            groupBoxFilter.TabStop = false;
+            groupBoxFilter.Text = "Filter";
+            // 
+            // btnAdd
+            // 
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Image = Properties.Resources.AddPerson_32;
+            btnAdd.Location = new Point(653, 22);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(38, 35);
+            btnAdd.TabIndex = 7;
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnSearch
+            // 
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Image = Properties.Resources.SearchPerson;
+            btnSearch.Location = new Point(609, 22);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(38, 35);
+            btnSearch.TabIndex = 6;
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtFilterBy
+            // 
+            txtFilterBy.Location = new Point(344, 26);
+            txtFilterBy.Name = "txtFilterBy";
+            txtFilterBy.Size = new Size(259, 23);
+            txtFilterBy.TabIndex = 1;
+            txtFilterBy.KeyPress += txtFilterBy_KeyPress;
+            txtFilterBy.Validating += txtFilterBy_Validating;
+            // 
+            // cmbFilterBy
+            // 
+            cmbFilterBy.FormattingEnabled = true;
+            cmbFilterBy.Items.AddRange(new object[] { "Person ID", "National No." });
+            cmbFilterBy.Location = new Point(118, 26);
+            cmbFilterBy.Name = "cmbFilterBy";
+            cmbFilterBy.Size = new Size(220, 23);
+            cmbFilterBy.TabIndex = 0;
+            cmbFilterBy.SelectedIndexChanged += cmbFilterBy_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -70,40 +114,9 @@
             label1.TabIndex = 0;
             label1.Text = "Filter by";
             // 
-            // cmbFilterBy
+            // errorProvider1
             // 
-            cmbFilterBy.FormattingEnabled = true;
-            cmbFilterBy.Location = new Point(118, 26);
-            cmbFilterBy.Name = "cmbFilterBy";
-            cmbFilterBy.Size = new Size(220, 23);
-            cmbFilterBy.TabIndex = 0;
-            // 
-            // txtFilterBy
-            // 
-            txtFilterBy.Location = new Point(344, 26);
-            txtFilterBy.Name = "txtFilterBy";
-            txtFilterBy.Size = new Size(259, 23);
-            txtFilterBy.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Image = Properties.Resources.SearchPerson;
-            btnSearch.Location = new Point(609, 22);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(38, 35);
-            btnSearch.TabIndex = 6;
-            btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Image = Properties.Resources.AddPerson_32;
-            btnAdd.Location = new Point(653, 22);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(38, 35);
-            btnAdd.TabIndex = 7;
-            btnAdd.UseVisualStyleBackColor = true;
+            errorProvider1.ContainerControl = this;
             // 
             // ctrlPersonCardWithFilter
             // 
@@ -111,24 +124,27 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(label1);
-            Controls.Add(groupBox1);
-            Controls.Add(ctrlPersonCard1);
+            Controls.Add(groupBoxFilter);
+            Controls.Add(ctrlPersonCard);
             Name = "ctrlPersonCardWithFilter";
             Size = new Size(897, 494);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Load += ctrlPersonCardWithFilter_Load;
+            groupBoxFilter.ResumeLayout(false);
+            groupBoxFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ctrlPersonCard ctrlPersonCard1;
-        private GroupBox groupBox1;
+        private ctrlPersonCard ctrlPersonCard;
+        private GroupBox groupBoxFilter;
         private TextBox txtFilterBy;
         private ComboBox cmbFilterBy;
         private Label label1;
         private Button btnAdd;
         private Button btnSearch;
+        private ErrorProvider errorProvider1;
     }
 }
