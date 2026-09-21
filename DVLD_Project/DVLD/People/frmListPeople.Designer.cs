@@ -88,6 +88,7 @@
             dgvListPeople.ReadOnly = true;
             dgvListPeople.Size = new Size(1313, 274);
             dgvListPeople.TabIndex = 2;
+            dgvListPeople.DoubleClick += dgvListPeople_DoubleClick;
             // 
             // contextMenuStrip
             // 
@@ -168,6 +169,7 @@
             cbxFilerBy.Size = new Size(231, 29);
             cbxFilerBy.TabIndex = 4;
             cbxFilerBy.Text = "None";
+            cbxFilerBy.SelectedIndexChanged += cbxFilerBy_SelectedIndexChanged;
             // 
             // btnAddNewPerson
             // 
@@ -222,6 +224,8 @@
             txtFilter.Size = new Size(230, 29);
             txtFilter.TabIndex = 9;
             txtFilter.Visible = false;
+            txtFilter.TextChanged += txtFilter_TextChanged;
+            txtFilter.KeyPress += txtFilter_KeyPress;
             // 
             // frmListPeople
             // 
