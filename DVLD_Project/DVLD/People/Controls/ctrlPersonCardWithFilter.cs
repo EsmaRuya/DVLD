@@ -5,9 +5,12 @@ namespace DVLD.People.Controls
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
-        //
-        // Events & delegates
-        //
+        public event Action<int> OnPersonSelected;
+        protected virtual void PersonSelected(int PersonId)
+        {
+            Action<int> handler = OnPersonSelected; // 
+            if(handler != null) handler(PersonId);
+        }
 
         private int _PersonID = -1;
         private bool _ShowAddPerson = true;
@@ -46,6 +49,13 @@ namespace DVLD.People.Controls
             InitializeComponent();
         }
 
+        private void _DataBackEvent(object sender, int PersonId)
+        {
+            cmbFilterBy.SelectedIndex = 0;
+            txtFilterBy.Text = PersonId.ToString();
+            ctrlPersonCard.LoadPersonInfo(PersonId);
+        }
+
         private void _FindNow()
         {
             switch (cmbFilterBy.Text)
@@ -54,13 +64,14 @@ namespace DVLD.People.Controls
                     ctrlPersonCard.LoadPersonInfo(int.Parse(txtFilterBy.Text));
                     break;
                 case "National No.":
-                    ctrlPersonCard.LoadPersonInfo(int.Parse(txtFilterBy.Text));
+                    ctrlPersonCard.LoadPersonInfo(txtFilterBy.Text);
                     break;
                 default:
                     break;
             }
 
-            ////////////// 
+            if (OnPersonSelected != null && FilterEnable)
+                OnPersonSelected(ctrlPersonCard.PersonID);
         }
 
         public void LoadPersonInfo(int PersonId)
@@ -85,8 +96,10 @@ namespace DVLD.People.Controls
 
         private void txtFilterBy_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)12) { btnSearch.PerformClick(); }
+            // charracter code 13 = enter
+            if (e.KeyChar == (char)13)  btnSearch.PerformClick(); 
 
+            // Allow only digits - No letters
             if (cmbFilterBy.Text == "Person ID")
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -113,7 +126,7 @@ namespace DVLD.People.Controls
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddUpdatePerson frm = new frmAddUpdatePerson();
-            /////////
+            frm.DataBack += _DataBackEvent; // Subscribe to DataBack event (frmAddUpdatePerson)
             frm.ShowDialog();
         }
 
