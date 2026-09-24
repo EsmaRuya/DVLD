@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DVLD_DataAccess
 {
-    internal class clsUserData
+    public class clsUserData
     {
         public static bool isUserExist(int UserId)
         {
@@ -186,7 +186,7 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
-        public static int AddUser(int PersonId, string UserName, string PassWord, bool isActive)
+        public static int AddNewUser(int PersonId, string UserName, string PassWord, bool isActive)
         {
             int UserId = -1;
 
