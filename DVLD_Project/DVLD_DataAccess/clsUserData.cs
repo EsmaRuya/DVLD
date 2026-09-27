@@ -305,7 +305,7 @@ namespace DVLD_DataAccess
             DataTable dt = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-            string query = @"SELET Users.UserId,
+            string query = @"SELECT Users.UserId,
                                    Users.PersonId,
                                    FullName = People.FirstName + ' ' + People.SecondName + ' ' +  ISNULL(People.ThirdName, '') + ' ' + People.LastName,
                                    Users.UserName,
