@@ -121,12 +121,14 @@
             phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
             phoneCallToolStripMenuItem.Size = new Size(149, 22);
             phoneCallToolStripMenuItem.Text = "Phone Call";
+            phoneCallToolStripMenuItem.Click += phoneCallToolStripMenuItem_Click;
             // 
             // sendEmailToolStripMenuItem
             // 
             sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
             sendEmailToolStripMenuItem.Size = new Size(149, 22);
             sendEmailToolStripMenuItem.Text = "Send Email";
+            sendEmailToolStripMenuItem.Click += sendEmailToolStripMenuItem_Click;
             // 
             // btnClose
             // 
@@ -151,12 +153,14 @@
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(149, 22);
             editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // addNewPersonToolStripMenuItem
             // 
             addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
             addNewPersonToolStripMenuItem.Size = new Size(149, 22);
             addNewPersonToolStripMenuItem.Text = "Add New User";
+            addNewPersonToolStripMenuItem.Click += addNewPersonToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -168,6 +172,7 @@
             showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             showDetailsToolStripMenuItem.Size = new Size(149, 22);
             showDetailsToolStripMenuItem.Text = "Show Details";
+            showDetailsToolStripMenuItem.Click += showDetailsToolStripMenuItem_Click;
             // 
             // contextMenuStrip
             // 
@@ -180,6 +185,7 @@
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             deleteToolStripMenuItem.Size = new Size(149, 22);
             deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // dgvListUsers
             // 

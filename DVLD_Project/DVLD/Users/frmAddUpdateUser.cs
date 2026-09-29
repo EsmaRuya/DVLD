@@ -66,7 +66,7 @@ namespace DVLD.Users
             txtPassword.Text = _User.Password;
             txtConfirmPassword.Text = _User.Password;
             cb_isActive.Checked = _User.isActive;
-            ctrlPersonCardWithFilter.LoadPersonInfo(_User.UserID);
+            ctrlPersonCardWithFilter.LoadPersonInfo(_User.personID);
         }
 
         private void _CheckTxtIsEmpty(TextBox txt, CancelEventArgs e)

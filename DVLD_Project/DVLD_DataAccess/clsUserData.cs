@@ -84,7 +84,7 @@ namespace DVLD_DataAccess
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-            string query = @"SELET * FROM Users
+            string query = @"SELECT * FROM Users
                              WHERE UserId = @UserId";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserId", UserId);
@@ -119,7 +119,7 @@ namespace DVLD_DataAccess
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-            string query = @"SELET * FROM Users
+            string query = @"SELECT * FROM Users
                              WHERE PersonId = @PersonId";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PersonId", PersonId);
@@ -155,7 +155,7 @@ namespace DVLD_DataAccess
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
-            string query = @"SELET * FROM Users
+            string query = @"SELECT * FROM Users
                              WHERE UserName = @UserName AND PassWord = @PassWord";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@UserName", UserName);
