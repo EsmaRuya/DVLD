@@ -47,7 +47,7 @@
             // ctrlPersonCardWithFilter
             // 
             ctrlPersonCardWithFilter.BackColor = Color.White;
-            ctrlPersonCardWithFilter.FilterEnable = true;
+            ctrlPersonCardWithFilter.FilterEnabled = true;
             ctrlPersonCardWithFilter.Location = new Point(12, 72);
             ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";
             ctrlPersonCardWithFilter.ShowAddPerson = true;

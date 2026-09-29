@@ -92,6 +92,7 @@
             btnAddNewUser.Size = new Size(61, 45);
             btnAddNewUser.TabIndex = 15;
             btnAddNewUser.UseVisualStyleBackColor = true;
+            btnAddNewUser.Click += btnAddNewUser_Click;
             // 
             // cbxFilerBy
             // 

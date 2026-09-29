@@ -80,7 +80,7 @@ namespace DVLD_Business
             return clsUserData.isUserExist(UserName);
         }
 
-        public static bool isUserExistForPersinId(int PersonId)
+        public static bool isUserExistForPersonId(int PersonId)
         {
             return clsUserData.isUserExistForPersonId(PersonId);
         }

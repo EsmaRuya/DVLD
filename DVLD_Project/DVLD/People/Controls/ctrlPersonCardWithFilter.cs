@@ -33,7 +33,7 @@ namespace DVLD.People.Controls
                 btnAdd.Visible = _ShowAddPerson;
             }
         }
-        public bool FilterEnable
+        public bool FilterEnabled
         {
             get { return _FilterEnabled; }
             set
@@ -70,7 +70,7 @@ namespace DVLD.People.Controls
                     break;
             }
 
-            if (OnPersonSelected != null && FilterEnable)
+            if (OnPersonSelected != null && FilterEnabled)
                 OnPersonSelected(ctrlPersonCard.PersonID);
         }
 
@@ -132,7 +132,7 @@ namespace DVLD.People.Controls
 
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            cmbFilterBy.SelectedIndex = 0;
+            cmbFilterBy.SelectedIndex = 1;
             txtFilterBy.Focus();
         }
     }

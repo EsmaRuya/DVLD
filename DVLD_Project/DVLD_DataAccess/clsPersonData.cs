@@ -127,12 +127,13 @@ namespace DVLD_DataAccess
                 {
                     isFound = true;
 
+                    personID = (int)reader["PersonID"];
                     firstName = clsMethodHelper.ConvertReaderIntoString(reader, "FirstName");
                     secondName = clsMethodHelper.ConvertReaderIntoString(reader, "SecondName");
                     thirdName = clsMethodHelper.ConvertReaderIntoString(reader, "ThirdName");
                     lastName = clsMethodHelper.ConvertReaderIntoString(reader, "LastName");
                     dateOfBirth = (DateTime)reader["DateOfBirth"];
-                    gender = (short)reader["Gender"];
+                    gender = (byte)reader["Gender"];
                     address = clsMethodHelper.ConvertReaderIntoString(reader, "Address");
                     phoneNumber = clsMethodHelper.ConvertReaderIntoString(reader, "Phone");
                     email = clsMethodHelper.ConvertReaderIntoString(reader, "Email");
