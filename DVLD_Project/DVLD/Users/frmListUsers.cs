@@ -98,7 +98,9 @@ namespace DVLD.Users
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmUserInfo frm = new frmUserInfo((int)dgvListUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+            _RefreshUsersList();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
