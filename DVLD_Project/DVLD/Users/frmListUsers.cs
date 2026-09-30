@@ -82,10 +82,26 @@ namespace DVLD.Users
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
 
+            if (MessageBox.Show($"Are you sure you want to delete the user with ID {userID} ?","Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if(clsUser.DeleteUser(userID))
+                {
+                    MessageBox.Show($"User with ID {userID} is deleted successfully!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _RefreshUsersList();
+                }
+
+                else MessageBox.Show("User is not deleted successfully!\nSomething goes wrong...", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -99,5 +115,6 @@ namespace DVLD.Users
         {
             MessageBox.Show("This feature is not implemented yat!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
     }
 }

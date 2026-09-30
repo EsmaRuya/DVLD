@@ -48,6 +48,8 @@
             dgvListUsers = new DataGridView();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
             contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -119,14 +121,14 @@
             // phoneCallToolStripMenuItem
             // 
             phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            phoneCallToolStripMenuItem.Size = new Size(149, 22);
+            phoneCallToolStripMenuItem.Size = new Size(180, 22);
             phoneCallToolStripMenuItem.Text = "Phone Call";
             phoneCallToolStripMenuItem.Click += phoneCallToolStripMenuItem_Click;
             // 
             // sendEmailToolStripMenuItem
             // 
             sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            sendEmailToolStripMenuItem.Size = new Size(149, 22);
+            sendEmailToolStripMenuItem.Size = new Size(180, 22);
             sendEmailToolStripMenuItem.Text = "Send Email";
             sendEmailToolStripMenuItem.Click += sendEmailToolStripMenuItem_Click;
             // 
@@ -146,44 +148,44 @@
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(146, 6);
+            toolStripSeparator2.Size = new Size(177, 6);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(149, 22);
+            editToolStripMenuItem.Size = new Size(180, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // addNewPersonToolStripMenuItem
             // 
             addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            addNewPersonToolStripMenuItem.Size = new Size(149, 22);
+            addNewPersonToolStripMenuItem.Size = new Size(180, 22);
             addNewPersonToolStripMenuItem.Text = "Add New User";
             addNewPersonToolStripMenuItem.Click += addNewPersonToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(146, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // showDetailsToolStripMenuItem
             // 
             showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            showDetailsToolStripMenuItem.Size = new Size(149, 22);
+            showDetailsToolStripMenuItem.Size = new Size(180, 22);
             showDetailsToolStripMenuItem.Text = "Show Details";
             showDetailsToolStripMenuItem.Click += showDetailsToolStripMenuItem_Click;
             // 
             // contextMenuStrip
             // 
-            contextMenuStrip.Items.AddRange(new ToolStripItem[] { showDetailsToolStripMenuItem, toolStripSeparator1, addNewPersonToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, toolStripSeparator2, sendEmailToolStripMenuItem, phoneCallToolStripMenuItem });
+            contextMenuStrip.Items.AddRange(new ToolStripItem[] { showDetailsToolStripMenuItem, toolStripSeparator1, addNewPersonToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, toolStripSeparator3, changePasswordToolStripMenuItem, toolStripSeparator2, sendEmailToolStripMenuItem, phoneCallToolStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip1";
-            contextMenuStrip.Size = new Size(150, 148);
+            contextMenuStrip.Size = new Size(181, 198);
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(149, 22);
+            deleteToolStripMenuItem.Size = new Size(180, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
@@ -222,6 +224,18 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(180, 22);
+            changePasswordToolStripMenuItem.Text = "Change Password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(177, 6);
             // 
             // frmListUsers
             // 
@@ -274,5 +288,7 @@
         private DataGridView dgvListUsers;
         private Label label1;
         private PictureBox pictureBox1;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
