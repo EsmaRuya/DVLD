@@ -100,12 +100,12 @@ namespace DVLD.Users
         {
             frmUserInfo frm = new frmUserInfo((int)dgvListUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-            _RefreshUsersList();
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmChangePassword frm = new frmChangePassword((int)dgvListUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)

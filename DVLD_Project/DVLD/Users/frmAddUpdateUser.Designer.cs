@@ -320,6 +320,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New User";
             Load += frmAddUpdateUser_Load;
+            Resize += frmAddUpdateUser_Resize;
             tabControl.ResumeLayout(false);
             tbPersonInfo.ResumeLayout(false);
             tbLoginInfo.ResumeLayout(false);

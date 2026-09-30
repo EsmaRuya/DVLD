@@ -164,7 +164,7 @@ namespace DVLD.Users
         {
             _CheckTxtIsEmpty(txtUserName, e);
 
-            if(_Mode == enMode.AddNewUser)
+            if (_Mode == enMode.AddNewUser)
             {
                 _CheckIfUsernameExist(sender, e);
             }
@@ -176,7 +176,7 @@ namespace DVLD.Users
             }
         }
 
-        private void txtPassword_Validating(object sender,CancelEventArgs e)
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
             _CheckTxtIsEmpty(txtPassword, e);
         }
@@ -185,12 +185,17 @@ namespace DVLD.Users
         {
             _CheckTxtIsEmpty(txtConfirmPassword, e);
 
-            if(txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
+            if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtConfirmPassword, "Password confirmation doesn't match password");
             }
             else errorProvider.SetError(txtConfirmPassword, null);
+        }
+
+        private void frmAddUpdateUser_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(946, 727);
         }
     }
 }

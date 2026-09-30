@@ -12,6 +12,11 @@ namespace DVLD.Users
             _UserID = UserId;
         }
 
+        private void frmUserInfo_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(910, 623);
+        }
+
         private void frmUserInfo_Load(object sender, EventArgs e)
         {
             ctrlUserCard.LoadUserInfo(_UserID);

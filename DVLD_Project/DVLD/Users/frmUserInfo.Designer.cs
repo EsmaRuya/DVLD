@@ -68,6 +68,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "User Info";
             Load += frmUserInfo_Load;
+            Resize += frmUserInfo_Resize;
             ResumeLayout(false);
         }
 

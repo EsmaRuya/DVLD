@@ -21,5 +21,11 @@ namespace DVLD
             frmListUsers frm = new frmListUsers();
             frm.ShowDialog();
         }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmUserInfo frm = new frmUserInfo();
+            //frm.ShowDialog();
+        }
     }
 }
