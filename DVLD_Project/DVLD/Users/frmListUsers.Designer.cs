@@ -45,11 +45,12 @@
             showDetailsToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip = new ContextMenuStrip(components);
             deleteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             dgvListUsers = new DataGridView();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            changePasswordToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator3 = new ToolStripSeparator();
+            cbisActive = new ComboBox();
             contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -62,6 +63,8 @@
             txtFilter.Size = new Size(230, 23);
             txtFilter.TabIndex = 19;
             txtFilter.Visible = false;
+            txtFilter.TextChanged += txtFilter_TextChanged;
+            txtFilter.KeyPress += txtFilter_KeyPress;
             // 
             // lblRecordsCount
             // 
@@ -100,12 +103,13 @@
             // 
             cbxFilerBy.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbxFilerBy.FormattingEnabled = true;
-            cbxFilerBy.Items.AddRange(new object[] { "None", "Person ID", "National No.", "First Name", "Second Name", "Third Name", "Last Name", "Country", "Gender", "Phone", "Email" });
+            cbxFilerBy.Items.AddRange(new object[] { "None", "User ID", "Username", "Person ID", "Full Name", "is Active" });
             cbxFilerBy.Location = new Point(99, 229);
             cbxFilerBy.Name = "cbxFilerBy";
             cbxFilerBy.Size = new Size(147, 23);
             cbxFilerBy.TabIndex = 14;
             cbxFilerBy.Text = "None";
+            cbxFilerBy.SelectedIndexChanged += cbxFilerBy_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -121,14 +125,14 @@
             // phoneCallToolStripMenuItem
             // 
             phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            phoneCallToolStripMenuItem.Size = new Size(180, 22);
+            phoneCallToolStripMenuItem.Size = new Size(168, 22);
             phoneCallToolStripMenuItem.Text = "Phone Call";
             phoneCallToolStripMenuItem.Click += phoneCallToolStripMenuItem_Click;
             // 
             // sendEmailToolStripMenuItem
             // 
             sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            sendEmailToolStripMenuItem.Size = new Size(180, 22);
+            sendEmailToolStripMenuItem.Size = new Size(168, 22);
             sendEmailToolStripMenuItem.Text = "Send Email";
             sendEmailToolStripMenuItem.Click += sendEmailToolStripMenuItem_Click;
             // 
@@ -148,31 +152,31 @@
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(165, 6);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(180, 22);
+            editToolStripMenuItem.Size = new Size(168, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // addNewPersonToolStripMenuItem
             // 
             addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            addNewPersonToolStripMenuItem.Size = new Size(180, 22);
+            addNewPersonToolStripMenuItem.Size = new Size(168, 22);
             addNewPersonToolStripMenuItem.Text = "Add New User";
             addNewPersonToolStripMenuItem.Click += addNewPersonToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(165, 6);
             // 
             // showDetailsToolStripMenuItem
             // 
             showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            showDetailsToolStripMenuItem.Size = new Size(180, 22);
+            showDetailsToolStripMenuItem.Size = new Size(168, 22);
             showDetailsToolStripMenuItem.Text = "Show Details";
             showDetailsToolStripMenuItem.Click += showDetailsToolStripMenuItem_Click;
             // 
@@ -180,14 +184,26 @@
             // 
             contextMenuStrip.Items.AddRange(new ToolStripItem[] { showDetailsToolStripMenuItem, toolStripSeparator1, addNewPersonToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem, toolStripSeparator3, changePasswordToolStripMenuItem, toolStripSeparator2, sendEmailToolStripMenuItem, phoneCallToolStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip1";
-            contextMenuStrip.Size = new Size(181, 198);
+            contextMenuStrip.Size = new Size(169, 176);
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(180, 22);
+            deleteToolStripMenuItem.Size = new Size(168, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(165, 6);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(168, 22);
+            changePasswordToolStripMenuItem.Text = "Change Password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
             // 
             // dgvListUsers
             // 
@@ -225,17 +241,16 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // changePasswordToolStripMenuItem
+            // cbisActive
             // 
-            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            changePasswordToolStripMenuItem.Size = new Size(180, 22);
-            changePasswordToolStripMenuItem.Text = "Change Password";
-            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            cbisActive.FormattingEnabled = true;
+            cbisActive.Items.AddRange(new object[] { "All", "Yes", "No" });
+            cbisActive.Location = new Point(252, 228);
+            cbisActive.Name = "cbisActive";
+            cbisActive.Size = new Size(121, 23);
+            cbisActive.TabIndex = 20;
+            cbisActive.Visible = false;
+            cbisActive.SelectedIndexChanged += cbisActive_SelectedIndexChanged;
             // 
             // frmListUsers
             // 
@@ -243,6 +258,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(814, 594);
+            Controls.Add(cbisActive);
             Controls.Add(txtFilter);
             Controls.Add(lblRecordsCount);
             Controls.Add(label3);
@@ -290,5 +306,6 @@
         private PictureBox pictureBox1;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ComboBox cbisActive;
     }
 }

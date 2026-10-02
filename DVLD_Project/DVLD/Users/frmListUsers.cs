@@ -84,9 +84,9 @@ namespace DVLD.Users
         {
             int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
 
-            if (MessageBox.Show($"Are you sure you want to delete the user with ID {userID} ?","Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure you want to delete the user with ID {userID} ?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if(clsUser.DeleteUser(userID))
+                if (clsUser.DeleteUser(userID))
                 {
                     MessageBox.Show($"User with ID {userID} is deleted successfully!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     _RefreshUsersList();
@@ -118,5 +118,114 @@ namespace DVLD.Users
             MessageBox.Show("This feature is not implemented yat!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void cbxFilerBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxFilerBy.Text != "None")
+            {
+                if (cbxFilerBy.Text == "is Active")
+                {
+                    txtFilter.Visible = false;
+                    cbisActive.Visible = true;
+                    cbisActive.SelectedItem = "All";
+                }
+                else
+                {
+                    txtFilter.Visible = true;
+                    txtFilter.Text = "";
+                    txtFilter.Focus();
+
+                    cbisActive.Visible = false;
+                }
+            }
+            else
+            {
+                txtFilter.Visible = false;
+                cbisActive.Visible = false;
+            }
+        }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbxFilerBy.Text == "Person ID" || cbxFilerBy.Text == "User ID")
+            {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            }
+
+            if (cbxFilerBy.Text == "Full Name")
+            {
+                e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar);
+            }
+
+            if(cbxFilerBy.Text == "Username")
+            {
+                e.Handled = char.IsWhiteSpace(e.KeyChar);
+            }
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+
+            switch (cbxFilerBy.Text)
+            {
+                case "Person ID":
+                    FilterColumn = "PersonId";
+                    break;
+                case "User ID":
+                    FilterColumn = "UserId";
+                    break;
+                case "Username":
+                    FilterColumn = "UserName";
+                    break;
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+                case "is Active":
+                    FilterColumn = "isActive";
+                    break;
+                default:
+                    FilterColumn = "None";
+                    break;
+            }
+
+            if(txtFilter.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _dtUsersList.DefaultView.RowFilter = "";
+                lblRecordsCount.Text = dgvListUsers.Rows.Count.ToString();
+                return; 
+            }
+
+            if(FilterColumn == "PersonId" || FilterColumn == "UserId")
+                _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text);
+            else
+                _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilter.Text);
+
+            lblRecordsCount.Text = dgvListUsers.Rows.Count.ToString();
+        }
+
+        private void cbisActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "isActive";
+            string FilterValue = cbisActive.Text;
+
+            switch(FilterValue)
+            {
+                case "All":
+                    break;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+            }
+
+            if (FilterValue == "All")
+                _dtUsersList.DefaultView.RowFilter = "";
+            else
+                _dtUsersList.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
+            lblRecordsCount.Text = dgvListUsers.Rows.Count.ToString();
+        }
     }
 }
