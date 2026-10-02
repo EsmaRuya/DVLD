@@ -1,6 +1,6 @@
 ﻿namespace DVLD
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -234,8 +234,9 @@
             signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
             signOutToolStripMenuItem.Size = new Size(214, 26);
             signOutToolStripMenuItem.Text = "Sign out";
+            signOutToolStripMenuItem.Click += signOutToolStripMenuItem_Click;
             // 
-            // Form1
+            // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -243,10 +244,11 @@
             Controls.Add(panelContent);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DVLD";
             WindowState = FormWindowState.Maximized;
+            FormClosed += frmMain_FormClosed;
             panelContent.ResumeLayout(false);
             panelContent.PerformLayout();
             menuStrip1.ResumeLayout(false);

@@ -1,13 +1,19 @@
+using DVLD.Login;
 using DVLD.People;
 using DVLD.Users;
 
 namespace DVLD
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -26,6 +32,14 @@ namespace DVLD
         {
             //frmUserInfo frm = new frmUserInfo();
             //frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Application.Exit();
+            //this.Close();
+            //frmLogin frm = new frmLogin();
+            //frm.Show();
         }
     }
 }
