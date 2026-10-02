@@ -1,4 +1,5 @@
-﻿using DVLD.People;
+﻿using DVLD.Global_Classes;
+using DVLD.People;
 using DVLD_Business;
 using System;
 
@@ -10,12 +11,7 @@ namespace DVLD.Login
         {
             InitializeComponent();
         }
-
-
-        private clsUser _User;
-        string file = "Users.txt";
-        string loginInfo = "";
-
+  
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -28,7 +24,7 @@ namespace DVLD.Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _User = clsUser.Find(txtUsername.Text, txtPassword.Text);
+            clsUser User = clsUser.Find(txtUsername.Text, txtPassword.Text);
 
             if (txtUsername.Text.Trim() == "" || txtPassword.Text.Trim() == "")
             {
@@ -36,62 +32,48 @@ namespace DVLD.Login
                 return;
             }
 
-            if (_User == null)
+            if (User == null)
             {
-                MessageBox.Show("Ops...\nWrong information. No user Found!", "No User Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                MessageBox.Show("Ops...\nInvalid information. Check your info again!", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);   
                 return;
             }
 
-            if (_User.isActive == false)
+            if (!User.isActive)
             {
-                MessageBox.Show("Couldn't login...\nThis user is not active.", "Not Active", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+                MessageBox.Show("Couldn't login...\nThis account is not active.\nContact admin to active your account.", "Not Active", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             } 
 
             if (cbxRememberMe.Checked)
             {
-                loginInfo = txtUsername.Text + "|" + txtPassword.Text;
-
-                if (!File.Exists(file))
-                {
-                    File.Create(file).Close(); 
-                }
-
-                if (!File.ReadAllText(file).Contains(loginInfo))
-                { 
-                    File.WriteAllText(file, loginInfo);
-                }
+                clsGlobal.RememberUsernamePassword(txtUsername.Text, txtPassword.Text);
             }
 
             if (!cbxRememberMe.Checked)
             {
-                File.Delete(file);
+                clsGlobal.RememberUsernamePassword("", "");
             }
 
-            frmMain frm = new frmMain();
+            clsGlobal.CurrentUser = User;
+            this.Hide();
+            frmMain frm = new frmMain(this);
             frm.Show();
-            this.Visible = false;
-
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            string str = "";
-            string[] strArr;
-          
+            string Username = "", Password = "";
 
-            if (File.Exists(file))
+            if (clsGlobal.GetStoredCredential(ref Username, ref Password))
             {
-                str = File.ReadAllText(file);
-                strArr = str.Split('|');
-
-                if (clsUser.isUserExist(strArr[0]))
-                {
-                    txtUsername.Text = strArr[0];
-                    txtPassword.Text = strArr[1];
-
-                } 
+                txtUsername.Text = Username;
+                txtPassword.Text = Password;
+                cbxRememberMe.Checked = true;
             }
+            else
+                cbxRememberMe.Checked = false;
         }
     }
 }

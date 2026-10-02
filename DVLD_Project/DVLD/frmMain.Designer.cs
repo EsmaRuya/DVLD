@@ -223,6 +223,7 @@
             changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             changePasswordToolStripMenuItem.Size = new Size(214, 26);
             changePasswordToolStripMenuItem.Text = "Change password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
             // 
             // singOutToolStripMenuItem
             // 
