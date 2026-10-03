@@ -14,7 +14,8 @@ namespace DVLD.Login
   
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+           // Application.Exit();
         }
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
@@ -59,7 +60,7 @@ namespace DVLD.Login
             clsGlobal.CurrentUser = User;
             this.Hide();
             frmMain frm = new frmMain(this);
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
