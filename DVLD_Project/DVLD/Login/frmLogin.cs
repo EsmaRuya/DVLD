@@ -14,8 +14,7 @@ namespace DVLD.Login
   
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-           // Application.Exit();
+           Application.Exit();
         }
 
         private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
