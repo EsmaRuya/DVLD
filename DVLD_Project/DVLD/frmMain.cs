@@ -2,6 +2,7 @@ using DVLD.Global_Classes;
 using DVLD.Login;
 using DVLD.People;
 using DVLD.Users;
+using DVLD.Applications.Application_Types;
 
 namespace DVLD
 {
@@ -17,7 +18,7 @@ namespace DVLD
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,6 +50,12 @@ namespace DVLD
             clsGlobal.CurrentUser = null;
             _frmLogin.Show();
             this.Close();
+        }
+
+        private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListApplicationTypes frm = new frmListApplicationTypes();
+            frm.ShowDialog();
         }
     }
 }

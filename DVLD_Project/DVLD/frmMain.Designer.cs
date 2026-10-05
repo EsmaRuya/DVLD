@@ -169,6 +169,7 @@
             manageApplicationTypesToolStripMenuItem.Name = "manageApplicationTypesToolStripMenuItem";
             manageApplicationTypesToolStripMenuItem.Size = new Size(282, 26);
             manageApplicationTypesToolStripMenuItem.Text = "Manage Application Types";
+            manageApplicationTypesToolStripMenuItem.Click += manageApplicationTypesToolStripMenuItem_Click;
             // 
             // manageTestTypesToolStripMenuItem
             // 

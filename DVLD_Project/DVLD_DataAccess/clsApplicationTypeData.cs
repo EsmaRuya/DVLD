@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DVLD_DataAccess
 {
-    public class clsApllicationTypeData
+    public class clsApplicationTypeData
     {
         public static DataTable GetAllApplicationTypes()
         {
@@ -12,7 +12,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString);
             string query = @"SELECT * FROM ApplicationTypes
-                            ORDER BY ApplicationTypeTitle";
+                            ORDER BY ApplicationTitle";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             try
@@ -30,7 +30,7 @@ namespace DVLD_DataAccess
             return dt;
         }
 
-        public static bool GetApplicationTypeByID(int ApplicationTypesId, ref string ApplicationTitle, ref float ApplicationFees)
+        public static bool GetApplicationTypeByID(int ApplicationTypesId, ref string ApplicationTitle, ref decimal ApplicationFees)
         {
             bool isFound = false;
 
@@ -50,7 +50,7 @@ namespace DVLD_DataAccess
                     isFound = true;
 
                     ApplicationTitle = clsMethodHelper.ConvertReaderIntoString(reader,"ApplicationTitle");
-                    ApplicationFees = (float)reader["ApplicationFees"];
+                    ApplicationFees = (decimal)reader["ApplicationFees"];
                 }
                 reader.Close();
             }
@@ -61,7 +61,7 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
-        public static bool UpdateApplicationType(int ApplicationTypesId, string ApplicationTitle, float ApplicationFees)
+        public static bool UpdateApplicationType(int ApplicationTypesId, string ApplicationTitle, decimal ApplicationFees)
         {
             int rowsEffected = 0;
 
