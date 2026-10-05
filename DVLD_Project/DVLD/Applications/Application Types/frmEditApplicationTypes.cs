@@ -1,6 +1,7 @@
 ﻿using DVLD_Business;
-using DVLD_DataAccess;
+using System.ComponentModel;
 using System;
+using DVLD.Global_Classes;
 
 namespace DVLD.Applications.Application_Types
 {
@@ -8,10 +9,6 @@ namespace DVLD.Applications.Application_Types
     {
         private int _ID = -1;
         private clsApplicationType _AppType;
-        public frmEditApplicationTypes()
-        {
-            InitializeComponent();
-        }
 
         public frmEditApplicationTypes(int ID)
         {
@@ -19,24 +16,18 @@ namespace DVLD.Applications.Application_Types
             _ID = ID;
         }
 
-        private bool _isTxtEmpty()
-        {
-            return (txtTitle.Text.Trim() == "" && txtFees.Text.Trim() == "");
-        }
-
         private bool _DataHasChanged()
         {
             return (txtTitle.Text != _AppType.ApplicationTitle || txtFees.Text != _AppType.ApplicationFees.ToString());
         }
 
-
         private void _LoadData()
         {
             _AppType = clsApplicationType.Find(_ID);
 
-            if( _AppType == null )
+            if (_AppType == null)
             {
-                MessageBox.Show("Something wrong.....","Error");
+                MessageBox.Show("Something wrong.....", "Error");
                 return;
             }
 
@@ -57,20 +48,29 @@ namespace DVLD.Applications.Application_Types
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(_DataHasChanged() && !_isTxtEmpty())
+            if(!this.ValidateChildren())
             {
-                _AppType.ApplicationTitle = txtTitle.Text;
-                _AppType.ApplicationFees = Convert.ToDecimal(txtFees.Text);
+                MessageBox.Show("Some fields are not valid! Check again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                if(_AppType.Save())
-                {
-                    MessageBox.Show("Application type is updated successfully", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Application type is NOT updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            if (!_DataHasChanged())
+            {
+                MessageBox.Show("No changes happened", "No change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            _AppType.ApplicationTitle = txtTitle.Text;
+            _AppType.ApplicationFees = Convert.ToDecimal(txtFees.Text);
+
+            if (_AppType.Save())
+            {
+                MessageBox.Show("Application type is updated successfully", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Application type is NOT updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,5 +79,35 @@ namespace DVLD.Applications.Application_Types
             this.Close();
         }
 
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTitle.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTitle, "This field is requeried");
+            }
+            else
+            {
+                errorProvider.SetError(txtTitle, null);
+            }
+        }
+
+        private void txtFees_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtFees, "This field is requeried");
+            }
+            if (!clsValidation.isNumber(txtFees.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtFees, "Invalid Number");
+            }
+            else
+            {
+                errorProvider.SetError(txtFees, null);
+            }
+        }
     }
 }

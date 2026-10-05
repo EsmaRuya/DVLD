@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             txtTitle = new TextBox();
             label2 = new Label();
@@ -37,6 +38,8 @@
             txtFees = new TextBox();
             btnSave = new Button();
             btnClose = new Button();
+            errorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -52,11 +55,11 @@
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(108, 140);
-            txtTitle.Multiline = true;
+            txtTitle.Location = new Point(108, 146);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(282, 34);
+            txtTitle.Size = new Size(282, 23);
             txtTitle.TabIndex = 3;
+            txtTitle.Validating += txtTitle_Validating;
             // 
             // label2
             // 
@@ -100,11 +103,11 @@
             // 
             // txtFees
             // 
-            txtFees.Location = new Point(108, 186);
-            txtFees.Multiline = true;
+            txtFees.Location = new Point(108, 192);
             txtFees.Name = "txtFees";
-            txtFees.Size = new Size(282, 34);
+            txtFees.Size = new Size(282, 23);
             txtFees.TabIndex = 8;
+            txtFees.Validating += txtFees_Validating;
             // 
             // btnSave
             // 
@@ -136,6 +139,10 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // frmEditApplicationTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +164,7 @@
             Text = "Edit Application Types";
             Load += frmEditApplicationTypes_Load;
             Resize += frmEditApplicationTypes_Resize;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,5 +180,6 @@
         private TextBox txtFees;
         private Button btnSave;
         private Button btnClose;
+        private ErrorProvider errorProvider;
     }
 }

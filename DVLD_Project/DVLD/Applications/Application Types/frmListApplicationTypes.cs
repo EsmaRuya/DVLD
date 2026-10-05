@@ -32,17 +32,12 @@ namespace DVLD.Applications.Application_Types
             dgvListAppTypes.DataSource = _dtAppTypes;
             lblAppTypesRecord.Text = _dtAppTypes.Rows.Count.ToString();
 
-            if (_dtAppTypes.Rows.Count > 0)
-            {
-                dgvListAppTypes.Columns[0].Width = 75;
-                dgvListAppTypes.Columns[0].HeaderText = "ID";
-
-                dgvListAppTypes.Columns[1].Width = 360;
-                dgvListAppTypes.Columns[1].HeaderText = "Title";
-
-                dgvListAppTypes.Columns[2].Width = 90;
-                dgvListAppTypes.Columns[2].HeaderText = "Fees";
-            }
+            dgvListAppTypes.Columns[0].Width = 75;
+            dgvListAppTypes.Columns[0].HeaderText = "ID";
+            dgvListAppTypes.Columns[1].Width = 360;
+            dgvListAppTypes.Columns[1].HeaderText = "Title";
+            dgvListAppTypes.Columns[2].Width = 92;
+            dgvListAppTypes.Columns[2].HeaderText = "Fees";
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,6 +45,7 @@ namespace DVLD.Applications.Application_Types
             
             frmEditApplicationTypes frm = new frmEditApplicationTypes((int)dgvListAppTypes.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+           // frmListApplicationTypes_Load(null,null);
             _RefreshList();
         }
 
