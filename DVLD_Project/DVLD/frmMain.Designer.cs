@@ -176,6 +176,7 @@
             manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
             manageTestTypesToolStripMenuItem.Size = new Size(282, 26);
             manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            manageTestTypesToolStripMenuItem.Click += manageTestTypesToolStripMenuItem_Click;
             // 
             // peopleToolStripMenuItem
             // 

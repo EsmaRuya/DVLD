@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnClose = new Button();
             lblTestTypesRecord = new Label();
             label2 = new Label();
             dgvListTestTypes = new DataGridView();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            editTestTypeToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvListTestTypes).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -51,6 +55,7 @@
             btnClose.TabIndex = 12;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // lblTestTypesRecord
             // 
@@ -81,11 +86,25 @@
             dgvListTestTypes.AllowUserToOrderColumns = true;
             dgvListTestTypes.BackgroundColor = Color.White;
             dgvListTestTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvListTestTypes.ContextMenuStrip = contextMenuStrip1;
             dgvListTestTypes.Location = new Point(12, 200);
             dgvListTestTypes.Name = "dgvListTestTypes";
             dgvListTestTypes.ReadOnly = true;
             dgvListTestTypes.Size = new Size(674, 262);
             dgvListTestTypes.TabIndex = 9;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { editTestTypeToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 48);
+            // 
+            // editTestTypeToolStripMenuItem
+            // 
+            editTestTypeToolStripMenuItem.Name = "editTestTypeToolStripMenuItem";
+            editTestTypeToolStripMenuItem.Size = new Size(180, 22);
+            editTestTypeToolStripMenuItem.Text = "Edit Test Type";
+            editTestTypeToolStripMenuItem.Click += editTestTypeToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
@@ -123,10 +142,12 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmListTestTypes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "List Test Types";
             Load += frmListTestTypes_Load;
             Resize += frmListTestTypes_Resize;
             ((System.ComponentModel.ISupportInitialize)dgvListTestTypes).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -140,5 +161,7 @@
         private DataGridView dgvListTestTypes;
         private PictureBox pictureBox1;
         private Label label1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editTestTypeToolStripMenuItem;
     }
 }

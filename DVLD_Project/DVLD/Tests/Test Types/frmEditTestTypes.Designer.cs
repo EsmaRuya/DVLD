@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnClose = new Button();
             btnSave = new Button();
             txtFees = new TextBox();
@@ -39,6 +40,8 @@
             label2 = new Label();
             label5 = new Label();
             txtDescription = new TextBox();
+            errorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // btnClose
@@ -54,6 +57,7 @@
             btnClose.TabIndex = 18;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // btnSave
             // 
@@ -68,6 +72,7 @@
             btnSave.TabIndex = 17;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // txtFees
             // 
@@ -75,6 +80,7 @@
             txtFees.Name = "txtFees";
             txtFees.Size = new Size(282, 23);
             txtFees.TabIndex = 16;
+            txtFees.Validating += txtFees_Validating;
             // 
             // label4
             // 
@@ -112,6 +118,7 @@
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(282, 23);
             txtTitle.TabIndex = 12;
+            txtTitle.Validating += txtTitle_Validating;
             // 
             // label1
             // 
@@ -151,6 +158,11 @@
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(282, 98);
             txtDescription.TabIndex = 20;
+            txtDescription.Validating += txtDescription_Validating;
+            // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
             // 
             // frmEditTestTypes
             // 
@@ -176,6 +188,7 @@
             Text = "Edit Test Types";
             Load += frmEditTestTypes_Load;
             Resize += frmEditTestTypes_Resize;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -193,5 +206,6 @@
         private Label label2;
         private Label label5;
         private TextBox txtDescription;
+        private ErrorProvider errorProvider;
     }
 }
