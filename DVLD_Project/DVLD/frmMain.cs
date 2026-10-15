@@ -4,6 +4,7 @@ using DVLD.People;
 using DVLD.Users;
 using DVLD.Applications.Application_Types;
 using DVLD.Tests.Test_Types;
+using DVLD.Applications.Local_Driving_License;
 
 namespace DVLD
 {
@@ -62,6 +63,18 @@ namespace DVLD
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListTestTypes frm = new frmListTestTypes();
+            frm.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicenseApplications frm = new frmAddUpdateLocalDrivingLicenseApplications();
+            frm.ShowDialog();
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplications frm = new frmListLocalDrivingLicenseApplications();
             frm.ShowDialog();
         }
     }
